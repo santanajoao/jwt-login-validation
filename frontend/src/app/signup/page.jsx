@@ -10,7 +10,7 @@ export const metadata = {
 export default function SignIn() {
   return (
     <main className={styles.page}>
-      <h1>Entre em sua conta</h1>
+      <h1>Crie sua conta</h1>
       
       <form className={styles.form}>
         <div className={styles.inputs_wrapper}>
@@ -46,7 +46,9 @@ export default function SignIn() {
 
         <button type="submit" className={styles.button}>Entrar</button>
 
-        <Link href="/signup" className={styles.link}>Não possui conta? Crie uma agora!</Link>
+        <Link href="/signin" className={styles.link}>
+          Já tem uma conta? Entre agora!
+        </Link>
       </form>
     </main>
   )
