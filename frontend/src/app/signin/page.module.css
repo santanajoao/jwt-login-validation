@@ -1,0 +1,57 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.form {
+  margin-top: 4rem;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.label_input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input {
+  padding: 1.2rem 1.6rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #202024;
+  color: #7C7C8A;
+  font-size: 1.4rem;
+}
+
+.button {
+  margin-top: 3.2rem;
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  color: black;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 1.6rem;
+  background-color: #81D8F7;
+  cursor: pointer;
+}
+
+.link {
+  font-size: 1.4rem;
+  color: #7C7C8A;
+}
