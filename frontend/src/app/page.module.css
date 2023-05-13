@@ -1,0 +1,47 @@
+.header {
+  background-color: #005E7C;
+  padding: 1.6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user_container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.user_message > strong {
+  color: #81D8F7;
+}
+
+.logout_button {
+  cursor: pointer;
+  border: none;
+  color: black;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  background-color: #81D8F7;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.main_message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.like {
+  font-size: 20rem;
+}

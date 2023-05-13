@@ -1,5 +1,6 @@
 :root {
   font-size: 62.5%;
+  height: 100%;
 }
 
 * {
@@ -12,4 +13,5 @@ body {
   background-color: black;
   font-size: 1.6rem;
   color: white;
+  height: 100%;
 }
