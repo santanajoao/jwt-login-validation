@@ -1,0 +1,42 @@
+services:
+  front:
+    container_name: jwt_sign_front
+    image: node:18.16.0-alpine
+    stdin_open: true 
+    tty: true
+    ports:
+      - ${NEXT_PORT}:3000
+    restart: on-failure
+    depends_on:
+      - api
+    volumes:
+      - ./frontend/:/home/app/
+    working_dir: /home/app
+  api:
+    container_name: jwt_sign_api
+    image: node:18.16.0-alpine
+    stdin_open: true 
+    tty: true
+    ports:
+      - ${API_PORT}:${API_PORT}
+    restart: on-failure
+    depends_on:
+      - db
+    volumes:
+      - ./backend/:/home/app/
+    working_dir: /home/app
+    environment:
+      - API_PORT=${API_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+  db:
+    container_name: jwt_sign_db
+    image: mysql:8.0.33
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    restart: on-failure
