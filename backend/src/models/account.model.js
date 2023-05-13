@@ -6,14 +6,14 @@
  * @param {import('sequelize').DataTypes} DataTypes 
  */
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const Account = sequelize.define('Account', {
     id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     timestamps: false,
-    tableName: 'users',
+    tableName: 'accounts',
     underscored: true,
   });
 
-  return User;
+  return Account;
 };

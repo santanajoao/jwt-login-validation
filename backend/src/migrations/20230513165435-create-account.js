@@ -8,14 +8,14 @@ module.exports = {
    * @param {import('sequelize')} Sequelize 
    */
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('account', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      username: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -37,6 +37,6 @@ module.exports = {
    * @param {import('sequelize')} Sequelize 
    */
   async down(queryInterface, _Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('account');
   }
 };
