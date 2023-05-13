@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai'
+import { AiOutlineMail, AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 import InputWithIcon from "@/components/InputWithIcon"
 import styles from './page.module.css'
 
@@ -14,6 +14,19 @@ export default function SignIn() {
       
       <form className={styles.form}>
         <div className={styles.inputs_wrapper}>
+          <div className={styles.label_input_wrapper}>
+            <label htmlFor="name-input" className={styles.label}>
+              Como você gostaria de ser chamado
+            </label>
+
+            <InputWithIcon
+              type="text"
+              required
+              placeholder="Seu nome"
+              id="name-input"
+              Icon={AiOutlineUser}
+            />
+          </div>
 
           <div className={styles.label_input_wrapper}>
             <label htmlFor="email-input" className={styles.label}>
