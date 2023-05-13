@@ -46,7 +46,9 @@ export default function SignIn() {
 
         <button type="submit" className={styles.button}>Entrar</button>
 
-        <Link href="/signup" className={styles.link}>Não possui conta? Crie uma agora!</Link>
+        <Link href="/signup" className={styles.link}>
+          Não possui conta? Crie uma agora!
+        </Link>
       </form>
     </main>
   )
