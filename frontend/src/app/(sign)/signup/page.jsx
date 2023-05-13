@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai'
+import { AiOutlineMail, AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 import InputWithIcon from "@/components/InputWithIcon"
 import styles from './page.module.css'
 
@@ -9,11 +9,24 @@ export const metadata = {
 
 export default function SignIn() {
   return (
-    <main className={styles.page}>
-      <h1>Entre em sua conta</h1>
+    <>
+      <h1>Crie sua conta</h1>
       
       <form className={styles.form}>
         <div className={styles.inputs_wrapper}>
+          <div className={styles.label_input_wrapper}>
+            <label htmlFor="name-input" className={styles.label}>
+              Como você gostaria de ser chamado
+            </label>
+
+            <InputWithIcon
+              type="text"
+              required
+              placeholder="Seu nome"
+              id="name-input"
+              Icon={AiOutlineUser}
+            />
+          </div>
 
           <div className={styles.label_input_wrapper}>
             <label htmlFor="email-input" className={styles.label}>
@@ -46,10 +59,10 @@ export default function SignIn() {
 
         <button type="submit" className={styles.button}>Entrar</button>
 
-        <Link href="/signup" className={styles.link}>
-          Não possui conta? Crie uma agora!
+        <Link href="/signin" className={styles.link}>
+          Já tem uma conta? Entre agora!
         </Link>
       </form>
-    </main>
+    </>
   )
 }
