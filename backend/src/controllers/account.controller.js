@@ -1,4 +1,4 @@
-const accountService = require('../services/account.service');
+const { accountService } = require('../services');
 const mapTypeToStatus = require('../utils/mapTypeToStatus');
 
 const handlePostSignIn = async (req, res) => {
