@@ -1,5 +1,5 @@
 const { signInSchema } = require('./schema');
-const { Account } = require('@/models');
+const { Account } = require('../../models');
 
 const validateSignin = async ({ email, password }) => {
   const { error } = signInSchema.validate({ email, password })
