@@ -1,7 +1,8 @@
-import Link from "next/link"
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai'
-import InputWithIcon from "@/components/InputWithIcon"
-import styles from './page.module.css'
+import LoginForm from '@/components/LoginForm';
+import LabelAndInputWithIcon from "@/components/LabelAndInputWithIcon"
+import Button from "@/components/Button"
+import CustomLink from "@/components/Link";
 
 export const metadata = {
   title: 'Entre em sua conta',
@@ -11,45 +12,34 @@ export default function SignIn() {
   return (
     <>
       <h1>Entre em sua conta</h1>
-      
-      <form className={styles.form}>
-        <div className={styles.inputs_wrapper}>
 
-          <div className={styles.label_input_wrapper}>
-            <label htmlFor="email-input" className={styles.label}>
-              Endereço de email
-            </label>
-            
-            <InputWithIcon
-              type="email"
-              required
-              placeholder="joao@email.com"
-              id="email-input"
-              Icon={AiOutlineMail}
-            />
-          </div>
+      <LoginForm.Form>
+        <LoginForm.InputsWrapper>
+          <LabelAndInputWithIcon
+            id="email-input"
+            label="Endereço de email"
+            inputType="email"
+            required
+            placeholder="joao@gmail.com"
+            Icon={AiOutlineMail}
+          />
 
-          <div className={styles.label_input_wrapper}>
-            <label htmlFor="email-input" className={styles.label}>
-              Sua senha
-            </label>
+          <LabelAndInputWithIcon
+            id="password-input"
+            label="Senha"
+            inputType="password"
+            required
+            placeholder="Sua senha"
+            Icon={AiOutlineLock}
+          />
+        </LoginForm.InputsWrapper>
 
-            <InputWithIcon
-              type="password"
-              required
-              placeholder="Sua senha"
-              id="password-input"
-              Icon={AiOutlineLock}
-            />
-          </div>
-        </div>
+        <Button type="submit">Criar</Button>
 
-        <button type="submit" className={styles.button}>Entrar</button>
-
-        <Link href="/signup" className={styles.link}>
+        <CustomLink href="/signup">
           Não possui conta? Crie uma agora!
-        </Link>
-      </form>
+        </CustomLink>
+      </LoginForm.Form>
     </>
   )
 }
