@@ -2,7 +2,7 @@ import InputWithIcon from "../InputWithIcon";
 import styles from './style.module.css';
 
 export default function LabelAndInputWithIcon({
-  label, id, inputType, required, placeholder, Icon,
+  label, id, inputType, required, placeholder, Icon, name,
 }) {
   return (
     <div className={styles.label_input_wrapper}>
@@ -16,6 +16,7 @@ export default function LabelAndInputWithIcon({
         placeholder={placeholder}
         id={id}
         Icon={Icon}
+        name={name}
       />
     </div>
   )

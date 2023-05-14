@@ -1,8 +1,8 @@
 import { AiOutlineMail, AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
-import LoginForm from '@/components/LoginForm';
-import LabelAndInputWithIcon from "@/components/LabelAndInputWithIcon";
+import LoginForm from '@/components/LoginForm'
+import LabelAndInputWithIcon from "@/components/LabelAndInputWithIcon"
 import Button from "@/components/Button"
-import CustomLink from "@/components/Link";
+import CustomLink from "@/components/Link"
 
 export const metadata = {
   title: 'Crie sua conta',
@@ -17,6 +17,7 @@ export default function SignUp() {
         <LoginForm.InputsWrapper>
           <LabelAndInputWithIcon
             id="name-input"
+            name="username"
             label="Nome"
             inputType="text"
             required
@@ -26,6 +27,7 @@ export default function SignUp() {
 
           <LabelAndInputWithIcon
             id="email-input"
+            name="email"
             label="Endereço de email"
             inputType="email"
             required
@@ -34,6 +36,7 @@ export default function SignUp() {
           />
 
           <LabelAndInputWithIcon
+            name="password"
             id="password-input"
             label="Senha"
             inputType="password"

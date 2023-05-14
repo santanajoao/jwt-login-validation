@@ -1,7 +1,7 @@
 import styles from './style.module.css'
 
 export default function InputWithIcon({
-  type, id, required, placeholder, Icon,
+  type, id, required, placeholder, Icon, name,
 }) {
   return (
     <div className={styles.input_container}>
@@ -12,6 +12,7 @@ export default function InputWithIcon({
         placeholder={placeholder}
         id={id}
         className={styles.input}
+        name={name}
       />
     </div>
   )
