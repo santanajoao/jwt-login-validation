@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "setdb": "npx sequelize db:create && npx sequelize db:migrate",
+    "start": "npm run setdb && node src/server.js",
     "dev": "nodemon src/server.js"
   },
   "keywords": [],

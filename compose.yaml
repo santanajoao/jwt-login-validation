@@ -33,6 +33,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - JWT_SECRET=${JWT_SECRET}
+    entrypoint: ["npm", "start"]
   db:
     container_name: jwt_sign_db
     image: mysql:8.0.33
