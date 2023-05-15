@@ -1,5 +1,6 @@
 const { signInSchema } = require('./schema');
 const { Account } = require('../../models');
+const bcrypt = require('bcryptjs');
 
 const validateSignin = async ({ email, password }) => {
   const { error } = signInSchema.validate({ email, password })
@@ -16,7 +17,7 @@ const validateSignin = async ({ email, password }) => {
     return { type: 'WRONG_PASSWORD', message: 'Wrong password' };
   }
 
-  return { type: null, message: '' };
+  return { type: null, message: account };
 };
 
 module.exports = validateSignin;
