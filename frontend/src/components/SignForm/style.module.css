@@ -3,7 +3,6 @@
   width: min(40rem, 100%);
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
 }
 
 .inputs_wrapper {

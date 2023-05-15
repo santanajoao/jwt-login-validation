@@ -5,28 +5,55 @@ import { AiOutlineMail, AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 import LoginForm from '../LoginForm'
 import LabelAndInputWithIcon from '../LabelAndInputWithIcon'
 import Button from '../Button'
-import CustomLink from '../Link'
+import CustomLink from '../CustomLink'
 import validations from '@/utils/validateForm'
+import { signup } from '@/services/api'
+import { useRouter } from 'next/navigation'
+import ErrorMessage from '../ErrorMessage'
 
 export default function SignUpForm() {
+  const router = useRouter()
   const [nameError, setNameError] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [apiError, setApiError] = useState('');
 
-  const handleSubmit = (event) => {
+  const cleanErrors = () => {
+    setApiError('')
+    setEmailError('')
+    setNameError('')
+    setPasswordError('')
+  }
+
+  const validateForm = ({ username, email, password }) => {
+    const nameValidation = validations.validateUsername(username)
+    setNameError(nameValidation)
+
+    const emailValidation = validations.validateEmail(email)
+    setEmailError(emailValidation)
+
+    const passwordValidation = validations.validatePassword(password)
+    setPasswordError(passwordValidation)
+
+    return !!(nameValidation || emailValidation || passwordValidation)
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
     const data = Object.fromEntries(formData.entries())
 
-    const nameValidation = validations.validateUsername(data.username)
-    setNameError(nameValidation)
+    const validationError = validateForm(data)
+    if (validationError) return null
 
-    const emailValidation = validations.validateEmail(data.email)
-    setEmailError(emailValidation)
-
-    const passwordValidation = validations.validatePassword(data.password)
-    setPasswordError(passwordValidation)
+    const result = await signup(data)
+    if (result.token) {
+      localStorage.setItem('token', result.token)
+      router.push('/')
+    } else {
+      setApiError(result.message)
+    }
   }
 
   return (
@@ -41,7 +68,7 @@ export default function SignUpForm() {
           placeholder="Como voce gostaria de ser chamado"
           Icon={AiOutlineUser}
           error={nameError}
-          onChange={nameError ? () => setNameError('') : null}
+          onChange={nameError ? cleanErrors : null}
         />
 
         <LabelAndInputWithIcon
@@ -53,7 +80,7 @@ export default function SignUpForm() {
           placeholder="joao@gmail.com"
           Icon={AiOutlineMail}
           error={emailError}
-          onChange={emailError ? () => setEmailError('') : null}
+          onChange={emailError ? cleanErrors : null}
         />
 
         <LabelAndInputWithIcon
@@ -65,14 +92,18 @@ export default function SignUpForm() {
           placeholder="Sua senha"
           Icon={AiOutlineLock}
           error={passwordError}
-          onChange={passwordError ? () => setPasswordError('') : null}
+          onChange={passwordError ? cleanErrors : null}
         />
-        
+
+        {apiError && <ErrorMessage>{apiError}</ErrorMessage>}
       </LoginForm.InputsWrapper>
 
+      
       <Button type="submit">Criar</Button>
 
-      <CustomLink href="/signin">Já tem uma conta? Entre agora!</CustomLink>
+      <CustomLink href="/signin">
+        Já tem uma conta? Entre agora!
+      </CustomLink>
     </LoginForm.Form>
   )
 }

@@ -5,25 +5,52 @@ import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai'
 import LoginForm from '../LoginForm'
 import LabelAndInputWithIcon from '../LabelAndInputWithIcon'
 import Button from '../Button'
-import CustomLink from '../Link'
+import CustomLink from '../CustomLink'
 import validations from '@/utils/validateForm'
+import { useRouter } from 'next/navigation'
+import { signin } from '@/services/api'
+import ErrorMessage from '../ErrorMessage'
 
 
 export default function SignInForm() {
+  const router = useRouter()
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [apiError, setApiError] = useState('');
 
-  const handleSubmit = (event) => {
+  const cleanErrors = () => {
+    setApiError('')
+    setEmailError('')
+    setNameError('')
+    setPasswordError('')
+  }
+
+  const validateForm = ({ email, password }) => {
+    const emailValidation = validations.validateEmail(email)
+    setEmailError(emailValidation)
+
+    const passwordValidation = validations.validatePassword(password)
+    setPasswordError(passwordValidation)
+
+    return !!(emailValidation || passwordValidation)
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
     const data = Object.fromEntries(formData.entries())
 
-    const emailValidation = validations.validateEmail(data.email)
-    setEmailError(emailValidation)
-    
-    const passwordValidation = validations.validatePassword(data.password)
-    setPasswordError(passwordValidation)
+    const validationError = validateForm(data)
+    if (validationError) return null
+
+    const result = await signin(data)
+    if (result.token) {
+      localStorage.setItem('token', result.token)
+      router.push('/')
+    } else {
+      setApiError(result.message)
+    }
   }
 
   return (
@@ -38,7 +65,7 @@ export default function SignInForm() {
           placeholder="joao@gmail.com"
           Icon={AiOutlineMail}
           error={emailError}
-          onChange={emailError ? () => setEmailError('') : null}
+          onChange={emailError ? cleanErrors : null}
         />
 
         <LabelAndInputWithIcon
@@ -50,11 +77,13 @@ export default function SignInForm() {
           placeholder="Sua senha"
           Icon={AiOutlineLock}
           error={passwordError}
-          onChange={passwordError ? () => setPasswordError('') : null}
+          onChange={passwordError ? cleanErrors : null}
         />
+
+        {apiError && <ErrorMessage>{apiError}</ErrorMessage>}
       </LoginForm.InputsWrapper>
 
-      <Button type="submit">Criar</Button>
+      <Button type="submit">Entrar</Button>
 
       <CustomLink href="/signup">
         Não possui conta? Crie uma agora!
