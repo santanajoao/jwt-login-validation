@@ -12,6 +12,7 @@ services:
     volumes:
       - ./frontend/:/home/app/
     working_dir: /home/app
+    entrypoint: ["npm", "start"]
   api:
     container_name: jwt_sign_api
     image: node:18.16.0-alpine
