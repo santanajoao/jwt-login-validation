@@ -1,33 +1,16 @@
 'use client'
 
 import SignUpForm from '@/components/SignUpForm'
-import { verifyToken } from '@/services/api'
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import useJWT from '@/hooks/useJWT'
 
 // export const metadata = {
 //   title: 'Crie sua conta',
 // }
 
 export default function SignUp() {
-  const [loading, setLoading] = useState(true)
-  const router = useRouter()
-  
-  useEffect(() => {
-    checkForToken()
-  }, []);
+  const { data } = useJWT({ shouldExist: false, redirectTo: '/' })
 
-  const checkForToken = async () => {
-    const token = localStorage.getItem('token')
-    if (!token) return setLoading(false)
-    
-    const result = await verifyToken(token)
-    const valid = !result.message
-    if (valid) router.push('/')
-    setLoading(false)
-  }
-
-  if (loading) {
+  if (!data) {
     return <h1>Carregando...</h1>
   }
 
