@@ -30,3 +30,7 @@
 .input::placeholder {
   color: #7C7C8A;
 }
+
+.input[data-error="true"] {
+  border: 1px solid red;
+}

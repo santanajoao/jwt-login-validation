@@ -7,3 +7,8 @@
 .label {
   font-weight: 600;
 }
+
+.error {
+  color: red;
+  font-size: 1.4rem;
+}
