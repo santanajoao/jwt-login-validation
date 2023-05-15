@@ -1,5 +1,5 @@
-import InputWithIcon from "../InputWithIcon";
-import styles from './style.module.css';
+import InputWithIcon from "../InputWithIcon"
+import styles from './style.module.css'
 
 export default function LabelAndInputWithIcon({
   label, id, inputType, required, placeholder, Icon, name, error, onChange,

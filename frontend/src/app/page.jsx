@@ -1,5 +1,5 @@
-import { AiOutlineLike } from 'react-icons/ai';
-import styles from './page.module.css';
+import { AiOutlineLike } from 'react-icons/ai'
+import styles from './page.module.css'
 
 export const metadata = {
   title: 'Página inicial',

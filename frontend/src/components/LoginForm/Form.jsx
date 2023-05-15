@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './style.module.css';
+import styles from './style.module.css'
 
 export default function Form({ children, onSubmit }) {
   return (

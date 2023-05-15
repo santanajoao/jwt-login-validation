@@ -1,9 +1,9 @@
-import Form from "./Form";
-import InputsWrapper from "./InputsWrapper";
+import Form from "./Form"
+import InputsWrapper from "./InputsWrapper"
 
 const components = {
   Form,
   InputsWrapper,
-};
+}
 
-export default components;
+export default components

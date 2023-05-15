@@ -25,7 +25,7 @@ export const validateEmail = (email) => {
 }
 
 export const validatePassword = (password) => {
-  const MIN_PASSWORD_LENGTH = 8;
+  const MIN_PASSWORD_LENGTH = 8
 
   if (!password) {
     return 'A senha é obrigatória'
@@ -43,4 +43,4 @@ const validations = {
   validatePassword
 }
 
-export default validations;
+export default validations
