@@ -1,0 +1,8 @@
+API_PORT=1234
+NEXT_PORT=2415
+DB_HOST=database_host
+DB_PORT=3789
+DB_NAME=database_name
+DB_USER=database_user
+DB_PASSWORD=very_strong_password
+JWT_SECRET=very_strong_secret
