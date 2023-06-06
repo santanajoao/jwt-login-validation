@@ -6,7 +6,7 @@ import useJWT from '@/hooks/useJWT'
 
 export default function Home() {
   const { data, signOut } = useJWT({ shouldExist: true, redirectTo: '/signin' })
-
+  
   if (!data) {
     return (
       <h1 style={{
