@@ -1,12 +1,12 @@
 import { verifyToken } from "@/services/api";
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 export default function useJWT({ redirectTo, shouldExist }) {
   const router = useRouter()
   const [data, setData] = useState(null)
   
-  const validate = async () => {
+  const validate = useCallback(async () => {
     const token = localStorage.getItem('token')
 
     if (shouldExist && !token) {
@@ -23,16 +23,14 @@ export default function useJWT({ redirectTo, shouldExist }) {
     }
 
     setData(data)
-  }
+  }, [redirectTo, router, shouldExist])
 
   const signOut = () => {
     localStorage.removeItem('token')
     router.push('/signin')
   }
 
-  useEffect(() => {
-    validate()
-  }, [])
+  useEffect(() => { validate() }, [validate]);
 
   return {
     data,
