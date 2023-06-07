@@ -3,10 +3,6 @@
 import SignInForm from '@/components/SignInForm'
 import useJWT from '@/hooks/useJWT';
 
-// export const metadata = {
-//   title: 'Entre em sua conta',
-// }
-
 export default function SignIn() {
   const { data } = useJWT({ shouldExist: false, redirectTo: '/' })
 
