@@ -16,7 +16,7 @@ export const validateEmail = (email) => {
     return 'O email é obrigatório'
   }
 
-  const emailRegex = /[\d\w]+@[\d\w]+\.\w{2,}/
+  const emailRegex =  /[\d\w]+@[^\s@]+.\w{2,}/
   const valid = emailRegex.test(email)
   if (!valid) {
     return 'O email deve ser válido'
