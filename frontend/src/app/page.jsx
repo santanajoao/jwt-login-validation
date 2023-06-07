@@ -3,22 +3,12 @@
 import { AiOutlineLike } from 'react-icons/ai'
 import styles from './page.module.css'
 import useJWT from '@/hooks/useJWT'
+import Loading from '@/components/Loading'
 
 export default function Home() {
   const { data, signOut } = useJWT({ shouldExist: true, redirectTo: '/signin' })
   
-  if (!data) {
-    return (
-      <h1 style={{
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        Carregando...
-      </h1>
-    )
-  }
+  if (!data) return <Loading />;
 
   return (
     <> 

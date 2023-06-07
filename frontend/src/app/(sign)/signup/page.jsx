@@ -1,14 +1,13 @@
 'use client'
 
+import Loading from '@/components/Loading'
 import SignUpForm from '@/components/SignUpForm'
 import useJWT from '@/hooks/useJWT'
 
 export default function SignUp() {
   const { data } = useJWT({ shouldExist: false, redirectTo: '/' })
 
-  if (!data) {
-    return <h1>Carregando...</h1>
-  }
+  if (!data) return <Loading />
 
   return (
     <>
