@@ -6,13 +6,17 @@ Uma aplicação de login com autenticação JWT desenvolvida com Next, Express, 
 
 O projeto foi desenvolvido com o objetivo de treinar os conhecimentos de JSON WEB Token e aplica-lo em todo o processo de entrar ou cadastrar em um site e páginas protegidas.
 
+---
+
+<img src="images/singin-form-screenshot.png" alt="captura de tela do formulário de login da aplicação" />
+
 As rotas `/signin` e `/signup` são respectivamente formulários de login e criação de conta, contendo validações e mensagens de erro para os campos feitas no front-end para que os dados sejam enviados para o back-end já tratados e evite requisições desnecessárias, e também validações no back-end que são retornadas e exibidas pelo front-end.
 
-<img src="images/signin-form-screenshot.png" alt="captura de tela do formulário de login da aplicação" />
-
-A rota `/` é uma rota protegida que o usuário só pode acessar se estiver logado e caso não esteja é redirecionado para a página de login
+---
 
 <img src="images/logged-screenshot.png" alt="captura de tela da aplicação com usuário logado" />
+
+A rota `/` é uma rota protegida que o usuário só pode acessar se estiver logado e caso não esteja é redirecionado para a página de login
 
 ## Tecnologias utilizadas
 - Next
