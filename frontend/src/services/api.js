@@ -1,6 +1,6 @@
 export const signin = async ({ email, password }) => {
   const response = await fetch(
-    `http://localhost:3005/account/signin`,
+    `http://localhost:3001/account/signin`,
     {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -13,7 +13,7 @@ export const signin = async ({ email, password }) => {
 
 export const signup = async ({ username, email, password }) => {
   const response = await fetch(
-    `http://localhost:3005/account/signup`,
+    `http://localhost:3001/account/signup`,
     {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
